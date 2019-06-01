@@ -19,7 +19,8 @@ namespace utility
  */
 template <typename Callback, typename... Futures>
 [[nodiscard]] source::Post callWhenReady(const Event& event, Callback&& cb,
-                                         Futures&&... futures) {
+                                         Futures&&... futures)
+{
     auto outerCb = [cb = std::move(cb),
                     futures = std::make_tuple(std::move(futures)...)](
                        source::EventBase& source) mutable {
